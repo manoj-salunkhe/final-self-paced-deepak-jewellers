@@ -1,0 +1,20 @@
+{
+  "name": "final-self-paced-deepak-jewellers",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "micro-services/*",
+    "common"
+  ],
+  "scripts": {
+    "clean-installation": "npx rimraf node_modules && npx rimraf package-lock.json && npx rimraf micro-services/ornament/node_modules && npx rimraf micro-services/ornament/package-lock.json && npx rimraf common/node_modules && npx rimraf common/package-lock.json && npm install"
+  },
+  "keywords": [],
+  "author": "Manoj",
+  "license": "ISC",
+  "description": "Deepak Jewellers Self-Paced Project",
+  "devDependencies": {
+    "rimraf": "^6.0.1"
+  }
+}

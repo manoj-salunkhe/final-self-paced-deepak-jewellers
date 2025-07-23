@@ -1,0 +1,13 @@
+# Node.js
+node_modules
+package-lock.json
+Notes.md
+
+# Env files
+.env
+
+# Build dist
+dist/
+
+# Notes
+ notes
