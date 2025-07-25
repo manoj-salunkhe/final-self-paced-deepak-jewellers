@@ -1,6 +1,14 @@
-import mongoose from "mongoose";
 import dotenv from "dotenv";
-dotenv.config();
+import mongoose from "mongoose";
+import path from "path";
+import { fileURLToPath } from "url";
+
+// Simulate __dirname in ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Load root .env file
+dotenv.config({ path: path.resolve(__dirname, "../../../.env") });
 
 const db_user = process.env.DB_USER;
 const db_password = encodeURIComponent(process.env.DB_PASSWORD || "");

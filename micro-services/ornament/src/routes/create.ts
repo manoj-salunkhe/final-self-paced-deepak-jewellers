@@ -1,4 +1,4 @@
-import { validateRequest } from "@deepak-jewellers/common";
+import { requireAuth, validateRequest } from "@deepak-jewellers/common";
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
 import Ornament from "../models/ornament";
@@ -10,6 +10,7 @@ const createOrnamentRouter = express.Router();
 
 createOrnamentRouter.post(
   "/api/ornaments/create",
+  requireAuth,
   [
     body("name").isString().withMessage("Name is required"),
     body("weight")
