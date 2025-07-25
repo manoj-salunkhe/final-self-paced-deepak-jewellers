@@ -37,7 +37,9 @@ signupRouter.post(
       process.env.JWT_SCERET!
     );
 
-    // TODO: Implement session based auth by adding jwt in the req session
+    req.session = {
+      jwt: userJwt,
+    };
 
     res.status(201).send({ ...user.toJSON(), jwt: userJwt });
   }
