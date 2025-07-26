@@ -1,12 +1,12 @@
 {
   "name": "@deepak-jewellers/common",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "type": "module",
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm run clean && tsc",
+    "build": "tsc",
+    "clean-build": "npm run clean && tsc",
     "pub": "npm run build && npm publish --access public",
     "update-pub": "npm version patch && npm run pub"
   },
@@ -17,10 +17,14 @@
   "dependencies": {
     "dotenv": "^17.2.1",
     "express": "^4.21.1",
-    "express-validator": "^7.2.0"
+    "express-validator": "^7.2.0",
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
-    "@types/express": "^4.17.21"
+    "@types/express": "^4.17.21",
+    "typescript": "^5.8.3",
+    "@types/jsonwebtoken": "^9.0.8",
+    "@types/cookie-session": "^2.0.49"
   },
   "publishConfig": {
     "access": "public"

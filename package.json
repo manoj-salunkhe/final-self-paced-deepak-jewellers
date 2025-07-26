@@ -4,8 +4,7 @@
   "main": "index.js",
   "private": true,
   "workspaces": [
-    "micro-services/*",
-    "common"
+    "micro-services/*"
   ],
   "scripts": {
     "clean-installation": "npx rimraf node_modules && npx rimraf package-lock.json && npx rimraf micro-services/ornament/node_modules && npx rimraf micro-services/ornament/package-lock.json && npx rimraf common/node_modules && npx rimraf common/package-lock.json && npm install"

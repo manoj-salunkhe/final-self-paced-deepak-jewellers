@@ -6,8 +6,16 @@ import { currentUserRouter } from "./routes/current-user";
 import { signinRouter } from "./routes/sigin";
 import { signoutRouter } from "./routes/signout";
 import { signupRouter } from "./routes/signup";
+import cors from "cors";
 
 const app = express();
+app.use(
+  cors({
+    origin: "http://localhost:5173", // only this domain can make requests
+    credentials: true, // allow cookies
+  })
+);
+
 app.use(express.json());
 app.use(
   cookieSession({
