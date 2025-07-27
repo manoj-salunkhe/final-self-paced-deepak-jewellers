@@ -9,7 +9,7 @@ const MATERIAL_VALUES = Object.values(Material);
 const createOrnamentRouter = express.Router();
 
 createOrnamentRouter.post(
-  "/api/ornaments/create",
+  "/api/ornament/create",
   requireAuth,
   [
     body("name").isString().withMessage("Name is required"),

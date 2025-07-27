@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dada-auth-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+        - name: data-auth-container
+          image: msalunkhe/dada-auth
+          ports:
+            - containerPort: 2200
+          env:
+            - name: JWT_SCERET
+              valueFrom:
+                secretKeyRef:
+                  name: dada-jwt-secret # this is the namespace where the secret is stored
+                  key: JWT_SCERET
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: dada-db-user-secret # this is the namespace where the secret is stored
+                  key: DB_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: dada-db-password-secret # this is the namespace where the secret is stored
+                  key: DB_PASSWORD
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dada-auth-service
+spec:
+  selector:
+    app: auth
+  ports:
+    - protocol: TCP
+      port: 2200
+      targetPort: 2200

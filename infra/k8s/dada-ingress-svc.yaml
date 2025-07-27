@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dada-auth-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: deepak-jewellers.com
+      http:
+        paths:
+          - path: /api/auth(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: dada-auth-service
+                port:
+                  number: 2200
+          - path: /api/ornament(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: dada-ornament-service
+                port:
+                  number: 2100
