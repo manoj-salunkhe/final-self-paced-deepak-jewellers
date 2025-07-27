@@ -10,13 +10,6 @@ spec:
     - host: deepak-jewellers.com
       http:
         paths:
-          - path: /api/auth(/|$)(.*)
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: dada-auth-service
-                port:
-                  number: 2200
           - path: /api/ornament(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
@@ -24,3 +17,10 @@ spec:
                 name: dada-ornament-service
                 port:
                   number: 2100
+          - path: /api(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: dada-auth-service
+                port:
+                  number: 2200

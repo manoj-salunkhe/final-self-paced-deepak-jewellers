@@ -1,10 +1,10 @@
+import { BadRequestError, validateRequest } from "@deepak-jewellers/common";
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
-import { validateRequest } from "@deepak-jewellers/common";
-import { User } from "../models/user";
-import { BadRequestError } from "@deepak-jewellers/common";
-import { Password } from "../services/password";
 import jwt from "jsonwebtoken";
+import { JWT_SECRET_EXPIRATION } from "../contants";
+import { User } from "../models/user";
+import { Password } from "../services/password";
 
 const userValidations = [
   body("email").isEmail().withMessage("Email must be valid"),
@@ -40,7 +40,10 @@ signinRouter.post(
         id: existingUser.id,
         email: existingUser.email,
       },
-      process.env.JWT_SCERET!
+      process.env.JWT_SCERET!,
+      {
+        expiresIn: JWT_SECRET_EXPIRATION,
+      }
     );
 
     req.session = {
